@@ -187,6 +187,7 @@ class ChewieController extends ChangeNotifier {
     this.allowFullScreen = true,
     this.allowMuting = true,
     this.systemOverlaysAfterFullScreen = SystemUiOverlay.values,
+    this.title,
     this.deviceOrientationsAfterFullScreen = const [
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -198,6 +199,8 @@ class ChewieController extends ChangeNotifier {
             'You must provide a controller to play a video') {
     _initialize();
   }
+
+  final String title;
 
   /// The controller for the video you want to play
   final VideoPlayerController videoPlayerController;
