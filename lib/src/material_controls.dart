@@ -59,13 +59,8 @@ class _MaterialControlsState extends State<MaterialControls> {
           absorbing: _hideStuff,
           child: Column(
             children: <Widget>[
-              chewieController.isFullScreen
-                  ? _buildHeader(
-                      context,
-                      chewieController.title == null
-                          ? ''
-                          : chewieController.title)
-                  : Container(),
+              _buildHeader(context,
+                  chewieController.title == null ? '' : chewieController.title),
               _latestValue != null &&
                           !_latestValue.isPlaying &&
                           _latestValue.duration == null ||
@@ -85,29 +80,32 @@ class _MaterialControlsState extends State<MaterialControls> {
   }
 
   AnimatedOpacity _buildHeader(BuildContext context, String title) {
+
     return AnimatedOpacity(
       opacity: _hideStuff ? 0.0 : 1.0,
       duration: Duration(milliseconds: 300),
       child: Container(
         color: darkColor,
         height: barHeight,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            IconButton(
-              onPressed: _onExpandCollapse,
-              color: lightColor,
-              icon: Icon(Icons.chevron_left),
-            ),
-            Text(
-              '$title',
-              style: TextStyle(
-                color: lightColor,
-                fontSize: 18.0,
+        child: chewieController.header != null
+            ? chewieController.header
+            : Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: _onExpandCollapse,
+                    color: lightColor,
+                    icon: Icon(Icons.chevron_left),
+                  ),
+                  Text(
+                    '$title',
+                    style: TextStyle(
+                      color: lightColor,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -149,7 +147,15 @@ class _MaterialControlsState extends State<MaterialControls> {
       duration: Duration(milliseconds: 300),
       child: Container(
         height: barHeight,
-        color: darkColor,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          colors: [
+            Colors.transparent,
+            Colors.black87,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        )),
         child: Row(
           children: <Widget>[
             _buildPlayPause(controller),

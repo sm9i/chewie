@@ -35,24 +35,28 @@ class _ChewieDemoState extends State<ChewieDemo> {
     _videoPlayerController2 = VideoPlayerController.network(
         'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4');
     _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController1,
-      aspectRatio: 3 / 2,
-      autoPlay: true,
-      looping: true,
-      // Try playing around with some of these other options:
+        videoPlayerController: _videoPlayerController1,
+        aspectRatio: 3 / 2,
+        autoPlay: true,
+        looping: true,
+        header: Expanded(
+            child: Container(
+          child: Text('222'),
+        ))
+        // Try playing around with some of these other options:
 
-      // showControls: false,
-      // materialProgressColors: ChewieProgressColors(
-      //   playedColor: Colors.red,
-      //   handleColor: Colors.blue,
-      //   backgroundColor: Colors.grey,
-      //   bufferedColor: Colors.lightGreen,
-      // ),
-      // placeholder: Container(
-      //   color: Colors.grey,
-      // ),
-      // autoInitialize: true,
-    );
+        // showControls: false,
+        // materialProgressColors: ChewieProgressColors(
+        //   playedColor: Colors.red,
+        //   handleColor: Colors.blue,
+        //   backgroundColor: Colors.grey,
+        //   bufferedColor: Colors.lightGreen,
+        // ),
+        // placeholder: Container(
+        //   color: Colors.grey,
+        // ),
+        // autoInitialize: true,
+        );
   }
 
   @override

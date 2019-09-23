@@ -188,6 +188,7 @@ class ChewieController extends ChangeNotifier {
     this.allowMuting = true,
     this.systemOverlaysAfterFullScreen = SystemUiOverlay.values,
     this.title,
+    this.header,
     this.deviceOrientationsAfterFullScreen = const [
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -201,6 +202,8 @@ class ChewieController extends ChangeNotifier {
   }
 
   final String title;
+
+  final Widget header;
 
   /// The controller for the video you want to play
   final VideoPlayerController videoPlayerController;
